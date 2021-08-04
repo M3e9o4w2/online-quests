@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> None </title>
+        <meta name = "viewport", content = "width = device-width">
+        <meta charset = "utf-8">
+        <style>
+            button{
+                width: 80%;
+                height: 50px;
+            }
+
+            p{
+                text-align: left;
+            }
+        </style>
+        <script>
+            speed = 100
+
+            function change_speed(s){
+                if(speed > 10 && speed < 200 || speed == 10 && s > 0 || s < 0 && speed == 200){
+                    speed += s
+                    document.getElementById("start").querySelector("p").innerHTML = "Скорость печатания: <br>" + String(Math.round(1000 / speed)) + " символов в секунду."
+                }
+
+                else{alert("Ошибка")}
+            }
+
+            function change_theme(){
+                if(document.querySelector("body").style.color == "black"){document.querySelector("body").style = "background-color: black; color: white;"}
+
+                else{document.querySelector("body").style = "background-color: white; color: black;"}
+            }
+
+            function write(id, i, text){
+                if(i < text.length){
+                    if(text[i] != "<"){
+                        document.getElementById(id).querySelector('p').innerHTML += text[i]
+                        i += 1
+                    }
+
+                    else{
+                        document.getElementById(id).querySelector('p').innerHTML += "<br>"
+                        i += 4
+                    }
+
+                    setTimeout(write, speed, id, i, text)
+                }
+
+                else{document.getElementById(id).querySelector('div').style.display = ''}
+            }
+
+            function change(id, new_id){
+                text = document.getElementById(new_id).querySelector('p').innerHTML
+                document.getElementById(new_id).querySelector('p').innerHTML = ''
+                i = 0
+
+                document.getElementById(id).style.display = "None"
+                document.getElementById(new_id).querySelector('div').style.display = "None"
+                document.getElementById(new_id).style.display = ""
+
+                localStorage.setItem('progress', new_id)
+
+                write(new_id, i, text)
+            }
+
+        </script>
+    </head>
+    <body align = "center", style = "background-color: white; color: black;">
+<!--
+        ###########Start###########
+-->
+        <div id = "start">
+            <button onclick = "change('start', '0')"> Начать заново </button> <br> <br>
+            <button onclick = "change('start', localStorage.getItem('progress'))"> Последнее сохранение </button> <br> <br>
+
+            <button onclick = "change_theme()"> Сменить тему </button> <br> <br>
+
+            <button onclick = "change_speed(-10)"> Увеличить скорость печатания </button> <br> <br>
+
+            <button onclick = "change_speed(10)"> Уменьшить скорость печатания </button>
+
+            <p style = "text-align: right;"> Скорость печатания:<br>10 символов в секунду. </p>
+        </div>
+
+        <div id = "0" style = "display: None;">
+            <p>На улице стоял теплый вечер. Все было спокойно, пока резко не завила сирена. Причина тревоги не была упомянута, но со слов было ясно, что нужно как можно быстрее явиться в убежище. <br> <br>
+Видимо, что-то серьезное, ведь вряд ли бы тогда просили взять с собой вещи первой необходимости.</p>
+
+            <div>
+                <button onclick = "change('0', '1_2')"> Остаться </button> <br> <br>
+                <button onclick = "change('0', '1_1')"> Собрать вещи </button>
+            </div>
+        </div>
+
+        <div id = "1_1", style = "display: None;">
+            <p> [In relise] </p>
+
+            <div>
+
+            </div>
+        </div>
+
+        <div id = "1_2", style = "display: None;">
+            <p> Остаться здесь было хорошей идеей, но... Что если реально что-то случилось?.. Что-то, что может убить... <br> <br>
+Девушка тихо вздохнула и посмотрела на часы, только шесть, но на улице уже мрак...<br> <br>
+В любом случае, лучше будет завтра утром на автобусе доехать, нежели сейчас пешком. Да и убежище не близко... <br> <br>
+"Хм...", – задумалась девушка. <br> <br>
+"Нет... Останусь или нет, лучше, наверное, будет обезопасить дом...".</p>
+
+            <div>
+                <button onclick = "change('1_2', '12_1')"> Заблокировать входы </button> <br> <br>
+                <button onclick = "change('1_2', '12_2')"> Лишняя трата сил </button>
+            </div>
+        </div>
+
+        <div id = "12_1", style = "display: None;">
+            <p>Идея хорошая, но в осуществлении достаточно сложная... Девушка давно жила одна, да и в плане физической силы была не очень. Поэтому передвинуть шкаф или тумбочку было плчти что нереально.<br><br>
+Девушка лишь тихо вздохнула и прошлась взглядом по комнате в поиске выхода, который, к счастью, быстро нашёлся.<br><br>
+Так как двери отрывались во внутреннюю сторону, девушка прибила к ним доски. Правда, без легких ушибов не обошлось, но это лучше чем возможная угроза снаружи.<br><br>
+Касательно окон... После небольших раздумий девушка все же решила закрыть их небольшими железными пластинами, которые лежали в подвале еще с прошлого ремонта.<br><br>
+Не часто приходилось подымать подобной вес, но он явно легче шкафа... С облегчением девушка села на диван и подняла взгляд на включенную лампочку.<br><br>
+"Может... Простые учения и я зря страдаю подобным?.. Как бы там ни было, утром уж точно узнаю...", – устало задумалась девушка и осмотрела комнату.</p>
+
+            <div>
+                <button onclick = "change('12_1', '12_3')"> Уснуть на диване </button> <br> <br>
+                <button onclick = "change('12_1', '12_4')"> "В подвале, вроде, должен быть старый диван, может там?.." </button>
+            </div>
+        </div>
+    </body>
+</html>
