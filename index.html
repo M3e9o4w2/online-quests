@@ -17,6 +17,7 @@
         </style>
         <script>
             speed = 100
+            quests = ["Последние дни"]
 
             function change_speed(s){
                 if(speed > 10 && speed < 200 || speed == 10 && s > 0 || s < 0 && speed == 200){
@@ -25,6 +26,18 @@
                 }
 
                 else{alert("Ошибка")}
+            }
+
+            function all_quests(){
+            alert("После выбора сохранения будут сброшены.")
+                document.getElementById("start").style.display = "None"
+                document.getElementById("top").innerHTML = ""
+
+                for(i = 0; i < quests.length; i++){
+                    document.getElementById("top").innerHTML += `<button onclick = "change('top', '` + String(i) + `')"> ` + quests[i] + ` </button> <br> <br>`
+                }
+
+                document.getElementById("top").innerHTML += `<button onclick = 'document.getElementById("start").style.display = ""; document.getElementById("top").style.display = "None"'> Вернуться обратно </button>`
             }
 
             function change_theme(){
@@ -52,6 +65,7 @@
             }
 
             function change(id, new_id){
+                document.getElementById(new_id).innerHTML = `<span style = "position: relative; color: green;"> <br> <h2> ` + quests[parseInt(new_id[0])] + ` </h2> </span>` + document.getElementById(new_id).innerHTML
                 text = document.getElementById(new_id).querySelector('p').innerHTML
                 document.getElementById(new_id).querySelector('p').innerHTML = ''
                 i = 0
@@ -72,7 +86,7 @@
         ###########Start###########
 -->
         <div id = "start">
-            <button onclick = "change('start', '0')"> Начать заново </button> <br> <br>
+            <button onclick = "all_quests()"> Начать новый квест </button> <br> <br>
             <button onclick = "change('start', localStorage.getItem('progress'))"> Последнее сохранение </button> <br> <br>
 
             <button onclick = "change_theme()"> Сменить тему </button> <br> <br>
@@ -85,17 +99,19 @@
             <a href = "https://t.me/joinchat/ndI8mTgV8xM3OWIy" style = "position: absolute; right: 10px; bottom: 10px; color: green"> Обновления и последние новости. </a> 
         </div>
 
+        <div id = "top"></div>
+
         <div id = "0" style = "display: None;">
             <p>На улице стоял теплый вечер. Все было спокойно, пока резко не завила сирена. Причина тревоги не была упомянута, но со слов было ясно, что нужно как можно быстрее явиться в убежище. <br> <br>
 Видимо, что-то серьезное, ведь вряд ли бы тогда просили взять с собой вещи первой необходимости.</p>
 
             <div>
-                <button onclick = "change('0', '1_2')"> Остаться </button> <br> <br>
-                <button onclick = "change('0', '1_1')"> Собрать вещи </button>
+                <button onclick = "change('0', '0-1')"> Остаться </button> <br> <br>
+                <button onclick = "change('0', '0-2')"> Собрать вещи </button>
             </div>
         </div>
 
-        <div id = "1_1", style = "display: None;">
+        <div id = "0-2", style = "display: None;">
             <p> [In relise] </p>
 
             <div>
@@ -103,7 +119,7 @@
             </div>
         </div>
 
-        <div id = "1_2", style = "display: None;">
+        <div id = "0-1", style = "display: None;">
             <p> Остаться здесь было хорошей идеей, но... Что если реально что-то случилось?.. Что-то, что может убить... <br> <br>
 Девушка тихо вздохнула и посмотрела на часы, только шесть, но на улице уже мрак...<br> <br>
 В любом случае, лучше будет завтра утром на автобусе доехать, нежели сейчас пешком. Да и убежище не близко... <br> <br>
@@ -111,12 +127,12 @@
 "Нет... Останусь или нет, лучше, наверное, будет обезопасить дом...".</p>
 
             <div>
-                <button onclick = "change('1_2', '12_1')"> Заблокировать входы </button> <br> <br>
-                <button onclick = "change('1_2', '12_2')"> Лишняя трата сил </button>
+                <button onclick = "change('0-1', '0-3')"> Заблокировать входы </button> <br> <br>
+                <button onclick = "change('0-1', '0-4')"> Лишняя трата сил </button>
             </div>
         </div>
 
-        <div id = "12_1", style = "display: None;">
+        <div id = "0-3", style = "display: None;">
             <p>Идея хорошая, но в осуществлении достаточно сложная... Девушка давно жила одна, да и в плане физической силы была не очень. Поэтому передвинуть шкаф или тумбочку было плчти что нереально.<br><br>
 Девушка лишь тихо вздохнула и прошлась взглядом по комнате в поиске выхода, который, к счастью, быстро нашёлся.<br><br>
 Так как двери отрывались во внутреннюю сторону, девушка прибила к ним доски. Правда, без легких ушибов не обошлось, но это лучше чем возможная угроза снаружи.<br><br>
@@ -125,12 +141,12 @@
 "Может... Простые учения и я зря страдаю подобным?.. Как бы там ни было, утром уж точно узнаю...", – устало задумалась девушка и осмотрела комнату.</p>
 
             <div>
-                <button onclick = "change('12_1', '12_3')"> Уснуть на диване </button> <br> <br>
-                <button onclick = "change('12_1', '12_4')"> "В подвале, вроде, должен быть старый диван, может там?.." </button>
+                <button onclick = "change('0-3', '0-5')"> Уснуть на диване </button> <br> <br>
+                <button onclick = "change('0-3', '0-5')"> "В подвале, вроде, должен быть старый диван, может там?.." </button>
             </div>
         </div>
 
-        <div id = "12_3", style = "display: None;">
+        <div id = "0-5", style = "display: None;">
             <p>Сам факт того, что что-то могло случится достаточно сильно пугал, из-за чего было сложно сомкнуть глаза. Каждый скрип, капли начинающегося дождя, все это пробирало до дрожи.<br><br>
 Комната, в которой находилась девушка была хорошо отопленой, но волнение заставило ее достать одеяло и закутаться в него.<br><br>
 В комнате было непривычно темно, девушка не могла видеть даже очертания своей руки.<br><br>
@@ -140,12 +156,12 @@
 – Мия. Ты тут?.. – снова послышался все также дрожащий, но уже более громкий голос.</p>
 
             <div>
-                <button onclick = "change('12_3', '12_5')"> Нельзя открывать двери, это опасно </button> <br> <br>
-                <button onclick = "change('12_3', '12_6')"> Нельзя ее оставлять там... Все же, они знакомы друг с другом... </button>
+                <button onclick = "change('0-5', '0-7')"> Нельзя открывать двери, это опасно </button> <br> <br>
+                <button onclick = "change('0-5', '0-7')"> Нельзя ее оставлять там... Все же, они знакомы друг с другом... </button>
             </div>
         </div>
 
-        <div id = "12_5", style = "display: None;">
+        <div id = "0-7", style = "display: None;">
             <p>Тело девушки пробрало до дрожи. Ей еще никогда так страшно не было.<br><br>
 С одной стороны она желала пустить ее, так как они были знакомы уже долгое время, хоть и не очень часто общались, но с другой стороны, Мия ощущала, что здесь было что-то не так... Ее голос... Она редко бывала в подобном состоянии...<br><br>
 – Вот и славно. – посляшался грубый мужской голос, вслед за которым раздался громкий и оглушительный выстрел.<br><br>
@@ -158,8 +174,8 @@
 Рядом была кухня, что, видимо, было единственным шансом девушки на спасение. Ее жизнь держалась на секундах... Как только появится свет, они найдут девушку... Единственное ее преимущество – знание этого дома и близость к дверям...</p>
 
             <div>
-                <button onclick = "change('12_5, '1-1')"> Добыть холодное оружие </button> <br> <br>
-                <button onclick = "change('12_5', '1-2')"> Сбежать </button>
+                <button onclick = "change('0-7', '0-9')"> Добыть холодное оружие </button> <br> <br>
+                <button onclick = "change('0-7', '0-10')"> Сбежать </button>
             </div>
         </div>
     </body>
