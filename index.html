@@ -29,8 +29,9 @@
             }
 
             function all_quests(){
-            alert("После выбора сохранения будут сброшены.")
+                alert("После выбора сохранения будут сброшены.")
                 document.getElementById("start").style.display = "None"
+                document.getElementById("top").style.display = ""
                 document.getElementById("top").innerHTML = ""
 
                 for(i = 0; i < quests.length; i++){
