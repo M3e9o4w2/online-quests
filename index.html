@@ -65,7 +65,7 @@
             }
 
             function change(id, new_id){
-                document.getElementById(new_id).innerHTML = `<span style = "position: relative; color: green;"> <br> <h2> ` + quests[parseInt(new_id[0])] + ` </h2> </span>` + document.getElementById(new_id).innerHTML
+                document.getElementById(new_id).innerHTML = `<span style = "position: relative; color: green;"> <h2> ` + quests[parseInt(new_id[0])] + ` </h2> </span>` + document.getElementById(new_id).innerHTML
                 text = document.getElementById(new_id).querySelector('p').innerHTML
                 document.getElementById(new_id).querySelector('p').innerHTML = ''
                 i = 0
