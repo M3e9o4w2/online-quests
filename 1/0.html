@@ -6,11 +6,14 @@
         <meta name = "viewport", content = "width = device-width">
         <meta charset = "utf-8">
         <style>
+            #buttons{
+                text-align: center;
+            }
+
             button{
                 width: 80%;
                 height: 50px;
                 border-radius: 40px;
-                text-align: center;
             }
 
             p{
@@ -33,11 +36,11 @@
                         i += 4
                     }
 
-                    setTimeout(load, 100) 
+                    setTimeout(load, 50) 
                 }
 
                 else{
-                    document.getElementById("text").innerHTML += "<br> <br> <a href = './0_1.index'> <button> Остаться </button> </a> <br> <br> <a href = './0_1.index'> <button> Собрать вещи </button> </a>"
+                    document.getElementById("text").innerHTML += "<p id = 'buttons'> <br> <br> <a href = './0_1.index'> <button> Остаться </button> </a> <br> <br> <a href = './0_1.index'> <button> Собрать вещи </button> </a> </p>" 
                 }
             } 
         </script>
