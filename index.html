@@ -15,10 +15,22 @@
                 text-align: left;
             }
         </style>
+        <script>
+            quests = ["Холодная зима..."]
+            res = ""
+
+            for(x, x > quests.length, x++){
+                res += "<button action = './" + x +"'> " + quests[x] + " </button>"
+            }
+
+            print(res)
+
+            document.getElementById("quests").
+        </script>
     </head>
     <body>
-            <p align = "right"> Выберете квест. </p>
-        <center>
+        <p align = "right"> Выберете квест. </p>
+        <center id = "quests">
             
         </center>
     </body>
