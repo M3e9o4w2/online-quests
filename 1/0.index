@@ -1,1 +1,40 @@
 
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> None </title>
+        <meta name = "viewport", content = "width = device-width">
+        <meta charset = "utf-8">
+        <style>
+            button{
+                width: 80%;
+                height: 50px;
+                border-radius: 40px;
+            }
+
+            p{
+                text-align: left;
+            }
+        </style>
+        <script>
+            function load(){ 
+                quests = ["Холодная зима..."]
+                res = ""
+
+                for(var x = 0; x < quests.length; x++){ 
+                    res += "<a href = './" + String(x + 1) +"'> <button> " + quests[x] + " </button> </a>"
+                }
+
+                document.getElementById("quests").innerHTML = res
+            }
+        </script>
+    </head>
+    <body>
+        <p style = "text-align: right;"> Выберете квест: </p>
+        <p id = "quests", style = "text-align: center;">
+            
+        </p>
+
+        <script> load() </script>
+    </body>
+</html>
