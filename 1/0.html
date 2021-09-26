@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,11 +17,9 @@
         </style>
         <script>
             var i = 0
+            var text = "На улице стоял теплый вечер. Все было спокойно, пока резко не завила сирена. Причина тревоги не была упомянута, но со слов было ясно, что нужно как можно быстрее явиться в убежище. <br> <br> Видимо, что-то серьезное, ведь вряд ли бы тогда просили взять с собой вещи первой необходимости."
 
             function load(){ 
-                text = "На улице стоял теплый вечер. Все было спокойно, пока резко не завила сирена. Причина тревоги не была упомянута, но со слов было ясно, что нужно как можно быстрее явиться в убежище. <br> <br>
-Видимо, что-то серьезное, ведь вряд ли бы тогда просили взять с собой вещи первой необходимости."
-
                 if(i < text.length){
                     if(text[i] != "<"){
                         document.getElementById("text").innerHTML += text[i]
@@ -34,14 +31,18 @@
                         i += 4
                     }
 
-                    setTimeout(load, 100)
+                    setTimeout(load, 100) 
+                }
+
+                else{
+                    document.getElementById("text").innerHTML += "<br> <br> <a href = "./0_1.index"> <button> Остаться </button> </a> <br> <br> <a href = "./0_1.index"> <button> Собрать вещи </button> </a>"
                 }
             } 
         </script>
     </head>
     <body>
         <p style = "text-align: right;"> Холодная зима... </p>
-        <p id = "text", style = "text-align: center;">   </p>
+        <p id = "text">   </p>
 
         <script> load() </script>
     </body>
