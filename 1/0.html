@@ -17,23 +17,30 @@
             }
         </style>
         <script>
+            var i = 0
+
             function load(){ 
-                quests = ["Холодная зима..."]
-                res = ""
+                text = "На улице стоял теплый вечер. Все было спокойно, пока резко не завила сирена. Причина тревоги не была упомянута, но со слов было ясно, что нужно как можно быстрее явиться в убежище. <br> <br>
+Видимо, что-то серьезное, ведь вряд ли бы тогда просили взять с собой вещи первой необходимости."
 
-                for(var x = 0; x < quests.length; x++){ 
-                    res += "<a href = './" + String(x + 1) +"'> <button> " + quests[x] + " </button> </a>"
+                if(i < text.length){
+                    if(text[i] != "<"){
+                        document.getElementById("text").innerHTML += text[i]
+                        i += 1
+                    }
+
+                    else{
+                        document.getElementById("text").innerHTML += "<br>"
+                        i += 4
+                    }
+
+                    setTimeout(load, 100)
                 }
-
-                document.getElementById("quests").innerHTML = res
-            }
         </script>
     </head>
     <body>
-        <p style = "text-align: right;"> Выберете квест: </p>
-        <p id = "quests", style = "text-align: center;">
-            
-        </p>
+        <p style = "text-align: right;"> Холодная зима... </p>
+        <p id = "text", style = "text-align: center;">   </p>
 
         <script> load() </script>
     </body>
