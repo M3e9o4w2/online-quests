@@ -16,27 +16,24 @@
             }
         </style>
         <script>
-            function load(){
-                alert() 
+            function load(){ 
                 quests = ["Холодная зима..."]
                 res = ""
 
-                for(x, x > quests.length, x++){
-                    res += "<button action = './" + x +"'> " + quests[x] + " </button>"
+                for(var x = 0; x < quests.length; x++){ 
+                    res += "<a href = './" + String(x + 1) +"'> <button> " + quests[x] + " </button> </a>"
                 }
 
-                alert(res)
-
-                document.getElementById("quests").
+                document.getElementById("quests").innerHTML = res
             }
-
-            load()
         </script>
     </head>
     <body>
-        <p style = "text-align: right;"> Выберете квест. </p>
-        <center id = "quests">
+        <p style = "text-align: right;"> Выберете квест: </p>
+        <p id = "quests", style = "text-align: center;">
             
-        </center>
+        </p>
+
+        <script> load() </script>
     </body>
 </html>
