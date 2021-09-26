@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> None </title>
+        <meta name = "viewport", content = "width = device-width">
+        <meta charset = "utf-8">
+        <style>
+            #buttons{
+                text-align: center;
+            }
+            button{
+                width: 80%;
+                height: 50px;
+                border-radius: 40px;
+            }
+
+            p{
+                text-align: left;
+            }
+        </style>
+        <script>
+            var i = 0
+            var text = 'Остаться здесь было хорошей идеей, но... Что если реально что-то случилось?.. Что-то, что может убить... <br> <br> Девушка тихо вздохнула и посмотрела на часы, только шесть, но на улице уже мрак...<br> <br> В любом случае, лучше будет завтра утром на автобусе доехать, нежели сейчас пешком. Да и убежище не близко... <br> <br> "Хм...", – задумалась девушка. <br> <br>
+"Нет... Останусь или нет, лучше, наверное, будет обезопасить дом...".'
+
+            function load(){ 
+                if(i < text.length){
+                    if(text[i] != "<"){
+                        document.getElementById("text").innerHTML += text[i]
+                        i += 1
+                    }
+
+                    else{
+                        document.getElementById("text").innerHTML += "<br>"
+                        i += 4
+                    }
+
+                    setTimeout(load, 100) 
+                }
+
+                else{
+                    document.getElementById("text").innerHTML += `<br> <br> <p id = 'buttons'> <a href = './0_3.index'> <button> Уснуть на диване </button> </a> <br> <br> <a href = './0_4.index'> <button> "В подвале, вроде, должен быть старый диван, может там?.." </button> </a> </p>`
+                }
+            } 
+        </script>
+    </head>
+    <body>
+        <p style = "text-align: right;"> Холодная зима... </p>
+        <p id = "text">   </p>
+
+        <script> load() </script>
+    </body>
+</html>
